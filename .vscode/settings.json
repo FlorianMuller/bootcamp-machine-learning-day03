@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/Users/fmuller/miniconda3/bin/python",
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true
+}
