@@ -4,13 +4,13 @@ import numpy as np
 # To test only
 def logistic_predict_(x, theta):
     if x.ndim == 1:
-        x = x[:, np.newaxis]
-    if theta.ndim == 2 and theta.shape[1] == 1:
-        theta = theta.flatten()
+        x = x.reshape(-1, 1)
+    if theta.ndim == 1:
+        theta = theta.reshape(-1, 1)
 
     if (x.size == 0 or theta.size == 0
-            or x.ndim != 2 or theta.ndim != 1
-            or x.shape[1] + 1 != theta.shape[0]):
+            or x.ndim != 2 or theta.ndim != 2
+            or x.shape[1] + 1 != theta.shape[0] or theta.shape[1] != 1):
         return None
 
     x_padded = np.c_[np.ones(x.shape[0]), x]
