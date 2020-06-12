@@ -40,7 +40,7 @@ def log_loss_(y, y_hat, eps=1e-15):
             or y.shape != y_hat.shape):
         return None
 
-    return -np.sum(y * np.log(y_hat) + (1 - y) * np.log(1 - y_hat)) / y.shape[0]
+    return -np.sum(y * np.log(y_hat + eps) + (1 - y) * np.log(1 - y_hat + eps)) / y.shape[0]
 
 
 if __name__ == "__main__":
