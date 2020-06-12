@@ -14,7 +14,7 @@ def logistic_predict_(x, theta):
         return None
 
     x_padded = np.c_[np.ones(x.shape[0]), x]
-    return 1 / (1 + np.exp(-x_padded.dot(theta)))
+    return 1 / (1 + np.exp(-x_padded @ theta))
 
 
 def vec_log_loss_(y, y_hat, eps=1e-15):
@@ -30,6 +30,8 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
     Raises:
         This function should not raise any Exception.
     """
+    # Using one dimensional array to use dot product with np.dot
+    # (np.dot use matmul with two dimensional array)
     if y.ndim == 2 and y.shape[1] == 1:
         y = y.flatten()
     if y_hat.ndim == 2 and y_hat.shape[1] == 1:
@@ -42,7 +44,10 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
 
     return -(y.dot(np.log(y_hat + eps)) + (1 - y).dot(np.log(1 - y_hat + eps))) / y.shape[0]
 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Version without "rank 1 array":
+    # Using `a.T @ b` to represent dot product
+    # (and not np.dot because it use matmul with two dimensional array)
 
     # if y.ndim == 1:
     #     y = y.reshape(-1, 1)
@@ -54,7 +59,7 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
     #         or y.shape != y_hat.shape):
     #     return None
 
-    # return (-(y.T.dot(np.log(y_hat + eps)) + (1 - y).T.dot(np.log(1 - y_hat + eps))) / y.shape[0]).item()
+    # return (-(y.T @ np.log(y_hat + eps) + (1 - y).T @ np.log(1 - y_hat + eps)) / y.shape[0]).item()
 
 
 if __name__ == "__main__":

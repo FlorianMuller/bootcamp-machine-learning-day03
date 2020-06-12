@@ -29,8 +29,9 @@ def log_gradient(x, y, theta):
         return None
 
     x_padded = np.c_[np.ones(x.shape[0]), x]
-    h = 1 / (1 + np.exp(-x_padded.dot(theta)))
-    return x_padded.T.dot(h - y) / y.shape[0]
+
+    h = 1 / (1 + np.exp(-x_padded @ theta))
+    return (x_padded.T @ (h - y)) / y.shape[0]
 
 
 if __name__ == "__main__":

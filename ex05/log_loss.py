@@ -14,7 +14,7 @@ def logistic_predict_(x, theta):
         return None
 
     x_padded = np.c_[np.ones(x.shape[0]), x]
-    return 1 / (1 + np.exp(-x_padded.dot(theta)))
+    return 1 / (1 + np.exp(-x_padded @ theta))
 
 
 def log_loss_(y, y_hat, eps=1e-15):
