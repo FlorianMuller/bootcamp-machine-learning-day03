@@ -13,8 +13,8 @@ def logistic_predict_(x, theta):
             or x.shape[1] + 1 != theta.shape[0] or theta.shape[1] != 1):
         return None
 
-    x_padded = np.c_[np.ones(x.shape[0]), x]
-    return 1 / (1 + np.exp(-x_padded @ theta))
+    x_prime = np.c_[np.ones(x.shape[0]), x]
+    return 1 / (1 + np.exp(-x_prime @ theta))
 
 
 def vec_log_loss_(y, y_hat, eps=1e-15):
