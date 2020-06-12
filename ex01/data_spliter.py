@@ -3,11 +3,14 @@ import numpy as np
 
 def data_spliter(x, y, proportion):
     """
-    Shuffles and splits the dataset (given by x and y) into a training and a test set, while respecting the given proportion of examples to be kept in the traning set.
+    Shuffles and splits the dataset (given by x and y) into a training and a
+    test set, while respecting the given proportion of examples to be kept in
+    the traning set.
     Args:
         x: has to be an numpy.ndarray, a matrix of dimension m * n.
         y: has to be an numpy.ndarray, a vector of dimension m * 1.
-        proportion: has to be a float, the proportion of the dataset that will be assigned to the training set.
+        proportion: has to be a float, the proportion of the dataset that will
+        be assigned to the training set.
     Returns:
         (x_train, x_test, y_train, y_test) as a tuple of numpy.ndarray
         None if x or y is an empty numpy.ndarray.
@@ -88,7 +91,8 @@ if __name__ == "__main__":
     #                            [300, 59],
     #                            [1, 42]]), array([0, 0]), array([1, 1, 0]))
 
-    # Be careful! The way tuples of arrays are displayed could be a bit confusing...
+    # Be careful! The way tuples of arrays are displayed
+    # could be a bit confusing...
     #
     # In the last example, the tuple returned contains the following arrays:
     # array([[59, 1],
